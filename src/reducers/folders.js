@@ -1,17 +1,27 @@
-const folders  = (folders, action) => {
+const folders  = (state = [], action) => {
+    let newState;
+
     switch(action.type) {
         case "ADD_FOLDER":
-            return [
-                ...JSON.parse(JSON.stringify(folders)),
+            newState = [
+                ...JSON.parse(JSON.stringify(state)),
                 {
                     folderId: action.folderId,
                     name: action.name
                 }
-            ]
+            ];
+        break;
         case "DELETE_FOLDER": 
-            return folders.filter( folder => folder.folderId !==  action.folderId);
-        default: return folders;
+            newState = state.filter( folder => folder.folderId !==  action.folderId);
+            break;
+        default: return state;
     }
+
+    let localStorageStore = JSON.parse(localStorage.getItem("store"));
+    localStorageStore.folders = newState;
+    localStorage.setItem("store", JSON.stringify(localStorageStore));
+
+    return newState;
 }
 
 export default folders;

@@ -9,15 +9,15 @@ export const deleteFolder = folderId => ({
     folderId
 })
 
-export const addNote = (noteId, name, folderId) => ({
+export const addNote = (folderId, noteId, name) => ({
     type: 'ADD_NOTE',
+    folderId,
     noteId,
-    name, 
-    folderId
+    name
 })
 
-export const deleteNote = (noteId, folderId) => ({
+export const deleteNote = (folderId, noteId) => ({
     type: 'DELETE_NOTE',
-    noteId,
-    folderId
+    folderId,
+    noteId
 })

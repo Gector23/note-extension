@@ -5,9 +5,12 @@ import { Provider } from 'react-redux';
 import noteApp from './reducers';
 import App from './components/App';
 
-if (!localStorage.getItem("state")) localStorage.setItem("state", JSON.stringify({folders: []}));
+if (!localStorage.getItem("store")) localStorage.setItem("store", JSON.stringify({
+    folders: [],
+    notes: []
+}));
 
-let preloadedState = JSON.parse(localStorage.getItem("state"));
+let preloadedState = JSON.parse(localStorage.getItem("store"));
 
 const store = createStore(noteApp, preloadedState);
 
