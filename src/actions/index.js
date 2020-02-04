@@ -16,8 +16,7 @@ export const addNote = (folderId, noteId, name) => ({
     name
 })
 
-export const deleteNote = (folderId, noteId) => ({
+export const deleteNote = noteId => ({
     type: 'DELETE_NOTE',
-    folderId,
     noteId
 })
