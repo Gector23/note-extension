@@ -7,13 +7,16 @@ const notes = (state = [], action) => {
                 ...JSON.parse(JSON.stringify(state)),
                 {
                     noteId: action.noteId,
-                    name: action.name,
+                    text: action.text,
                     folderId: action.folderId
                 }
             ];
             break;
         case "DELETE_NOTE": 
             newState = state.filter( note => note.noteId !== action.noteId );
+            break;
+        case "DELETE_ALL_NOTE_IN":
+            newState = state.filter( note => note.folderId !== action.folderId );
             break;
         default: return state;
     }

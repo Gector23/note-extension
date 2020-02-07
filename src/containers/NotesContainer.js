@@ -8,9 +8,13 @@ let NotesContainer = props => {
     let ownNotes = props.notes.filter( note => note.folderId === props.folderId);
 
     return (
-        ownNotes.map( note => (
-            <Note key={note.noteId} noteId={note.noteId} name={note.name} onNoteDelete={props.onNoteDelete}></Note>
-        ))
+        <div>
+            {
+                ownNotes.map( note => (
+                    <Note key={note.noteId} noteId={note.noteId} text={note.text} onNoteDelete={props.onNoteDelete}></Note>
+                ))
+            }
+        </div>
     );
 }
 
