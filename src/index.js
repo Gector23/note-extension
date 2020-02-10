@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import noteApp from './reducers';
 import App from './components/App';
+import './styles/index.scss';
 
 if (!localStorage.getItem("store")) localStorage.setItem("store", JSON.stringify({
     folders: [],

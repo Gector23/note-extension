@@ -1,12 +1,14 @@
 import React from 'react';
-import AddForm from '../containers/AddForm';
+import AddFolder from '../containers/AddFolder';
 import FoldersContainer from '../containers/FoldersContainer';
+import styles from '../styles/App.module.scss';
 
 class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <AddForm />
+                <h1 className={styles.heading}>SimpleNote</h1>
+                <AddFolder />
                 <FoldersContainer />
             </React.Fragment>
         );

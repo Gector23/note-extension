@@ -1,0 +1,47 @@
+$headerHeigth: 40px;
+
+.container {
+    width: 350px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.header {
+    display: flex;
+    height: $headerHeigth;
+    border-radius: 5px;
+    background-color: #e3e3e3;
+    cursor: pointer;
+}
+
+.folder-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+
+.name {
+    width: 270px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    font-size: 18px;
+    line-height: $headerHeigth;
+    font-weight: 700;
+}
+
+.delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+}
+
+.body {
+    padding: 10px;
+}
