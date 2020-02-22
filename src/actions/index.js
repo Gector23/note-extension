@@ -25,3 +25,13 @@ export const deleteAllNoteIn = folderId => ({
     type: 'DELETE_ALL_NOTE_IN',
     folderId
 })
+
+export const addAlert = (alertType, text) => ({
+    type: 'ADD_ALERT',
+    alertType,
+    text
+})
+
+export const deleteFirstAlert = () => ({
+    type: 'DELETE_FIRST_ALERT'
+})

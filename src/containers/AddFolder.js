@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFolder } from '../actions/index';
+import { addFolder, addAlert } from '../actions/index';
 import styles from '../styles/AddFolder.module.scss';
 
 class AddFolder extends React.Component {
@@ -8,7 +8,6 @@ class AddFolder extends React.Component {
         super(props);
 
         this.state = {inputValue: ""};
-        this.inputRef = React.createRef();
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,13 +16,25 @@ class AddFolder extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
+        if (this.state.inputValue.trim() === "") {
+            this.props.onAlert("warning", "Enter folder name");
+            this.setState({inputValue: ""});
+            return;
+        }
+
+        if (this.props.folderNames.has(this.state.inputValue.trim())) {
+            this.props.onAlert("warning", "A folder with the same name already exists");
+            this.setState( state => ({
+                inputValue: state.inputValue.trim()
+            }));
+            return;
+        }
+
+        const folderId = `f${new Date().getTime().toString(16)}`;
+
+        this.props.onNewFolder(folderId, this.state.inputValue.trim());
+
         this.setState({inputValue: ""});
-
-        let nextFolderId = localStorage.getItem("maxFolderId");
-        nextFolderId !== null ? nextFolderId++ : nextFolderId = 0;
-        localStorage.setItem("maxFolderId", nextFolderId);
-
-        this.props.dispatch(addFolder(nextFolderId, this.inputRef.current.value));
     }
 
     handleChange(event) {
@@ -37,7 +48,7 @@ class AddFolder extends React.Component {
 
         return (
             <form className={styles.form} onSubmit={this.handleSubmit}>
-                <input className={styles.input} value={this.state.inputValue} onChange={this.handleChange} ref={this.inputRef} placeholder="Enter folder name"></input>
+                <input className={styles.input} value={this.state.inputValue} onChange={this.handleChange} placeholder="Enter folder name"></input>
                 <button className={styles.submit} type="submit">
                     <img src={addFolderIconSrc} alt="folder icon"/>
                 </button>
@@ -46,6 +57,23 @@ class AddFolder extends React.Component {
     }
 }
 
-AddFolder = connect()(AddFolder);
+const mapStateToProps = state => {
+    let folderNames = new Set();
+
+    state.folders.forEach(folder => {
+        folderNames.add(folder.name);
+    });
+
+    return {folderNames};
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onNewFolder: (folderId, folderName) => dispatch(addFolder(folderId, folderName)),
+        onAlert: (alertTypr, text) => dispatch(addAlert(alertTypr, text))
+    };
+}
+
+AddFolder = connect(mapStateToProps, mapDispatchToProps)(AddFolder);
 
 export default AddFolder;

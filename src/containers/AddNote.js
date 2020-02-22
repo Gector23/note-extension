@@ -8,7 +8,6 @@ class AddNote extends React.Component {
         super(props);
 
         this.state = {inputValue: ""};
-        this.textareaRef = React.createRef();
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -17,13 +16,11 @@ class AddNote extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
+        const noteId = `n${new Date().getTime().toString(16)}`;
+
+        this.props.dispatch(addNote(this.props.folderId, noteId, this.state.inputValue));
+
         this.setState({inputValue: ""});
-
-        let nextNoteId = localStorage.getItem("maxNoteId");
-        nextNoteId !== null ? nextNoteId++ : nextNoteId = 0;
-        localStorage.setItem("maxNoteId", nextNoteId);
-
-        this.props.dispatch(addNote(this.props.folderId, nextNoteId, this.textareaRef.current.value));
     }
 
     handleChange(event) {
@@ -37,7 +34,7 @@ class AddNote extends React.Component {
 
         return (
             <form className={styles.form} onSubmit={this.handleSubmit}>
-                <textarea className={styles.textarea} value={this.state.inputValue} onChange={this.handleChange} ref={this.textareaRef} placeholder="Enter note"></textarea>
+                <textarea className={styles.textarea} value={this.state.inputValue} onChange={this.handleChange} placeholder="Enter note"></textarea>
                 <button className={styles.submit} type="submit">
                     <img src={addNoteIconSrc} alt="note icon"/>
                 </button>
