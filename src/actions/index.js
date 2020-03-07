@@ -13,6 +13,23 @@ export const addNote = (folderId, noteId, text) => ({
     type: 'ADD_NOTE',
     folderId,
     noteId,
+    text,
+    edit: false
+})
+
+export const startNoteEdit = noteId => ({
+    type: 'START_NOTE_EDIT',
+    noteId,
+})
+
+export const endNoteEdit = noteId => ({
+    type: 'END_NOTE_EDIT',
+    noteId
+})
+
+export const saveNoteEdit = (noteId, text) => ({
+    type: 'SAVE_NOTE_EDIT',
+    noteId,
     text
 })
 

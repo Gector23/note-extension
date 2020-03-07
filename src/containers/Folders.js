@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { deleteFolder, deleteAllNoteIn } from '../actions/index';
+import {connect} from 'react-redux';
+import {deleteFolder, deleteAllNoteIn} from '../actions/index';
 import Folder from '../components/Folder';
-import styles from '../styles/FoldersContainer.module.scss';
+import styles from '../styles/Folders.module.scss';
 
 let FoldersContainer = (props) => {
     let foldersList = props.folders.map(folder => (

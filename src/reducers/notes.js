@@ -18,6 +18,27 @@ const notes = (state = [], action) => {
         case "DELETE_ALL_NOTE_IN":
             newState = state.filter( note => note.folderId !== action.folderId );
             break;
+        case "START_NOTE_EDIT":
+            newState = JSON.parse(JSON.stringify(state));
+            newState.forEach(note => {
+                if (note.noteId === action.noteId) note.edit = true;
+            });
+            break;
+        case "SAVE_NOTE_EDIT":
+            newState = JSON.parse(JSON.stringify(state));
+            newState.forEach(note => {
+                if (note.noteId === action.noteId) {
+                    note.text = action.text;
+                    note.edit = false;
+                }
+            });
+            break;
+        case "END_NOTE_EDIT":
+            newState = JSON.parse(JSON.stringify(state));
+            newState.forEach(note => {
+                if (note.noteId === action.noteId) note.edit = false;
+            });
+            break;
         default: return state;
     }
 

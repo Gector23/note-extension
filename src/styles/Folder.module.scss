@@ -13,7 +13,9 @@ $headerHeigth: 40px;
 
 .header {
     display: flex;
+    align-items: center;
     height: $headerHeigth;
+    padding: 0 5px;
     border-radius: 5px;
     background-color: #e3e3e3;
     cursor: pointer;
@@ -23,23 +25,22 @@ $headerHeigth: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.delete-icon:hover {
+    background-color: #c8c8c8;
 }
 
 .name {
-    width: 270px;
+    width: 280px;
     box-sizing: border-box;
     padding-left: 10px;
     font-size: 18px;
     line-height: $headerHeigth;
     font-weight: 700;
-}
-
-.delete {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
 }
 
 .body {

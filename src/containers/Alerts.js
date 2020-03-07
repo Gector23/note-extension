@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { deleteFirstAlert } from '../actions/index';
-import styles from '../styles/AlertContainer.module.scss';
+import {connect} from 'react-redux';
+import {deleteFirstAlert} from '../actions/index';
+import styles from '../styles/Alerts.module.scss';
 
 let AlertConatiner = props => {
     return Boolean(props.alert) && (

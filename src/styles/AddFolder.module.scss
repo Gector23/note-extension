@@ -1,17 +1,19 @@
 .form {
     display: flex;
+    align-items: center;
     box-sizing: border-box;
     height: 40px;
     width: 350px;
     margin: 0 auto;
+    padding: 0 5px 0 10px;
     border: 1px solid #4794cc;
     border-radius: 5px;
+    transition: width 3s;
 }
 
 .input {
-    width: 310px;
+    width: 305px;
     box-sizing: border-box;
-    padding: 0 0 0 10px;
     border: none;
     border-radius: inherit;
     outline: none;
@@ -26,10 +28,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
+    width: 30px;
+    height: 30px;
     padding: 0;
     background: #ffffff;
     border: none;
-    border-radius: inherit;
+    border-radius: 3px;
     cursor: pointer;
+
+    &:hover {
+        background: #e3e3e3;
+    }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import AddFolder from '../containers/AddFolder';
-import FoldersContainer from '../containers/FoldersContainer';
-import AlertContainer from '../containers/AlertContainer';
+import Folders from '../containers/Folders';
+import Alerts from '../containers/Alerts';
 import styles from '../styles/App.module.scss';
 
 class App extends React.Component {
@@ -10,8 +10,8 @@ class App extends React.Component {
             <React.Fragment>
                 <h1 className={styles.heading}>SimpleNote</h1>
                 <AddFolder />
-                <FoldersContainer />
-                <AlertContainer />
+                <Folders />
+                <Alerts />
             </React.Fragment>
         );
     }

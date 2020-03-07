@@ -1,10 +1,29 @@
+.conatiner {
+    position: relative;
+    height: 30px;
+    overflow: hidden;
+    transition: padding .5s;
+
+    &-open {
+        padding-top: 80px;
+    }
+}
+
 .form {
+    position: absolute;
+    top: -70px;
     display: flex;
     width: 330px;
-    height: 68px;
+    height: 70px;
     box-sizing: border-box;
     border: 1px solid #4794cc;
     border-radius: 5px;
+    background: #ffffff;
+    transition: top .5s;
+
+    &-active {
+        top: 0px;
+    }
 }
 
 .textarea {
@@ -22,14 +41,49 @@
     };
 }
 
-.submit {
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+}
+
+.button {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
+    width: 30px;
+    height: 30px;
     padding: 0;
     background: #ffffff;
     border: none;
-    border-radius: inherit;
+    border-radius: 3px;
     cursor: pointer;
+
+    &:first-child {
+        margin-top: 5px;
+    }
+
+    &:last-child {
+        margin-bottom: 5px;
+    }
+
+    &:hover {
+        background: #e3e3e3;
+    }
+}
+
+.form-handle {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+        background: #e3e3e3;
+    }
 }

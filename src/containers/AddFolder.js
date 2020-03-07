@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addFolder, addAlert } from '../actions/index';
+import {connect} from 'react-redux';
+import {addFolder, addAlert} from '../actions/index';
 import styles from '../styles/AddFolder.module.scss';
 
 class AddFolder extends React.Component {
@@ -41,16 +41,16 @@ class AddFolder extends React.Component {
         this.setState({inputValue: event.target.value});
     }
 
-    render() {
-        const addFolderIconSrc = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAvUlEQVRIie2UTQ7CIBBGnz8rb+Mt2hqv4TGMmt4Ke
+    addFolderIconSrc = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAvUlEQVRIie2UTQ7CIBBGnz8rb+Mt2hqv4TGMmt4Ke
         xl7gUa3TXBRTAALQqGJJr5kNpR+r8ykwJ9vogJaQDrqlCrwhWeRfAoPrRYo5xRI4OYTpGLkLDMEevl9wXqGzC2wH3uQa8gGOVpUAALoVAmGW+GNKSc44v4XLqmCwgpcqfVeWzNOEisQAYJGfyHkspPARu3vrGCbHr
         jrQz4oSSiLiL2TuBLZoljKAMEuRQBwxj2rOjX8RcXQioeqBu3Ln4QChU8M4+FlAAAAAElFTkSuQmCC`;
 
+    render() {
         return (
             <form className={styles.form} onSubmit={this.handleSubmit}>
                 <input className={styles.input} value={this.state.inputValue} onChange={this.handleChange} placeholder="Enter folder name"></input>
                 <button className={styles.submit} type="submit">
-                    <img src={addFolderIconSrc} alt="folder icon"/>
+                    <img src={this.addFolderIconSrc} alt="folder icon"/>
                 </button>
             </form>
         );
