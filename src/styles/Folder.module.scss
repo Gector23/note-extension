@@ -1,10 +1,17 @@
-$headerHeigth: 40px;
+@import 'variables.scss';
+
+$folder-width: $outer-width - ($outer-margin * 2);
 
 .container {
-    width: 350px;
-    margin: 0 0 10px 25px;
+    width: $folder-width;
+    margin: {
+        top: 0;
+        right: 0;
+        bottom: 10px;
+        left: $outer-margin;
+    };
     border-radius: 5px;
-    background-color: #f1f1f1;
+    background-color: $inner-folder-color;
 
     &:last-child {
         margin-bottom: 0;
@@ -14,10 +21,10 @@ $headerHeigth: 40px;
 .header {
     display: flex;
     align-items: center;
-    height: $headerHeigth;
+    height: $folder-height;
     padding: 0 5px;
     border-radius: 5px;
-    background-color: #e3e3e3;
+    background-color: $outer-folder-color;
     cursor: pointer;
 }
 
@@ -25,24 +32,25 @@ $headerHeigth: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: $icon-size;
+    height: $icon-size;
     border-radius: 3px;
 }
 
-.delete-icon:hover {
-    background-color: #c8c8c8;
+.active-icon:hover {
+    background-color: $folder-active-icon-color;
 }
 
 .name {
-    width: 280px;
     box-sizing: border-box;
+    width: 280px;
     padding-left: 10px;
+    line-height: $folder-height;
     font-size: 18px;
-    line-height: $headerHeigth;
     font-weight: 700;
+    font-family: $text-font;
 }
 
 .body {
-    padding: 10px;
+    padding: $inner-padding;
 }

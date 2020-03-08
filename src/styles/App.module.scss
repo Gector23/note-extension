@@ -1,7 +1,12 @@
+@import 'variables.scss';
+
+$heading-width: $outer-width - ($outer-margin * 2);
+
 .heading {
-    width: 350px;
-    margin: 15px auto;
+    width: $heading-width;
+    margin: 15px $outer-margin;
+    color: $main-color;
     font-size: 34px;
+    font-family: 'Roboto Condensed', sans-serif;
     text-align: center;
-    color: #4794cc;
 }

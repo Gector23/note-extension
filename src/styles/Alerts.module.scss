@@ -1,22 +1,26 @@
+@import 'variables.scss';
+
+$alert-width: $outer-width - ($outer-margin * 2);
+
 .container {
     position: absolute;
     top: 0;
     left: 25px;
-    width: 350px;
+    width: $alert-width;
     height: 68px;
 }
 
 .alert {
     position: absolute;
-    animation: showAlert 2s infinite;
-    width: 350px;
-    height: 52px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: $alert-width;
+    height: 52px;
     border-radius: 5px;
     font-size: 18px;
     text-align: center;
+    animation: showAlert 2s infinite;
 }
 
 .success {

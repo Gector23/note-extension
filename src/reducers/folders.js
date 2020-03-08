@@ -10,9 +10,16 @@ const folders  = (state = [], action) => {
                     name: action.name
                 }
             ];
-        break;
+            break;
         case "DELETE_FOLDER": 
             newState = state.filter( folder => folder.folderId !==  action.folderId);
+            break;
+        case "FOLDER_MOVE": 
+            newState = JSON.parse(JSON.stringify(state));
+
+            let moveFolder = newState[action.oldIndex];
+            newState.splice(action.oldIndex, 1);
+            newState.splice(action.newIndex, 0, moveFolder);
             break;
         default: return state;
     }

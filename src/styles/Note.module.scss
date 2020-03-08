@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 .container {
     display: flex;
     margin-bottom: 10px;
@@ -10,13 +12,19 @@
 }
 
 .text {
-    width: 290px;
     box-sizing: border-box;
+    width: 290px;
     margin: 0;
-    padding: 10px 0 10px 10px;
+    padding: {
+        top: $inner-padding;
+        right: 0;
+        bottom: $inner-padding;
+        left: $inner-padding;
+    };
     white-space: pre-wrap;
     overflow-wrap: break-word;
     font-size: 16px;
+    font-family: $text-font;
 }
 
 .controls {
@@ -24,15 +32,15 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 40px;
+    width: $controls-width;
 }
 
-.button {
+.note-icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: $icon-size;
+    height: $icon-size;
     border-radius: 3px;
     cursor: pointer;
 
@@ -45,6 +53,6 @@
     }
 
     &:hover {
-        background: #e3e3e3;
+        background: $outer-folder-color;
     }
 }

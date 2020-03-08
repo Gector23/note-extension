@@ -13,7 +13,23 @@ const notes = (state = [], action) => {
             ];
             break;
         case "DELETE_NOTE": 
-            newState = state.filter( note => note.noteId !== action.noteId );
+            newState = state.filter(note => note.noteId !== action.noteId);
+            break;
+        case "NOTE_MOVE": 
+            newState = JSON.parse(JSON.stringify(state));
+
+            let moveArr = [];
+            newState.forEach((note, index) => {
+                if (note.folderId === action.folderId) {
+                    moveArr.push({
+                        note,
+                        index
+                    })
+                }
+            });
+
+            newState.splice(moveArr[action.oldIndex].index, 1);
+            newState.splice(moveArr[action.newIndex].index, 0, moveArr[action.oldIndex].note);
             break;
         case "DELETE_ALL_NOTE_IN":
             newState = state.filter( note => note.folderId !== action.folderId );

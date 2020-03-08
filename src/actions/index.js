@@ -1,12 +1,19 @@
 export const addFolder = (folderId, name) => ({
     type: 'ADD_FOLDER',
     folderId,
-    name
+    name,
+    edit: false
 })
 
 export const deleteFolder = folderId => ({
     type: 'DELETE_FOLDER',
     folderId
+})
+
+export const folderMove = (oldIndex, newIndex) => ({
+    type: 'FOLDER_MOVE',
+    oldIndex,
+    newIndex
 })
 
 export const addNote = (folderId, noteId, text) => ({
@@ -19,7 +26,7 @@ export const addNote = (folderId, noteId, text) => ({
 
 export const startNoteEdit = noteId => ({
     type: 'START_NOTE_EDIT',
-    noteId,
+    noteId
 })
 
 export const endNoteEdit = noteId => ({
@@ -41,6 +48,13 @@ export const deleteNote = noteId => ({
 export const deleteAllNoteIn = folderId => ({
     type: 'DELETE_ALL_NOTE_IN',
     folderId
+})
+
+export const noteMove = (folderId, oldIndex, newIndex) => ({
+    type: 'NOTE_MOVE',
+    folderId,
+    oldIndex,
+    newIndex
 })
 
 export const addAlert = (alertType, text) => ({

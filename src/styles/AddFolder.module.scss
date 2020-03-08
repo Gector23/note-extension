@@ -1,26 +1,39 @@
+@import 'variables.scss';
+
+$form-width: $outer-width - ($outer-margin * 2);
+$form-left-padding: 10px;
+$form-right-padding: 5px;
+$input-width: $form-width - $icon-size - $form-left-padding - $form-right-padding;
+
 .form {
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    height: 40px;
-    width: 350px;
+    width: $form-width;
+    height: $folder-height;
     margin: 0 auto;
-    padding: 0 5px 0 10px;
-    border: 1px solid #4794cc;
+    padding: {
+        top: 0;
+        right: $form-right-padding;
+        bottom: 0;
+        left: $form-left-padding;
+    };
+    border: 1px solid $main-color;
     border-radius: 5px;
     transition: width 3s;
 }
 
 .input {
-    width: 305px;
     box-sizing: border-box;
+    width: $input-width;
     border: none;
     border-radius: inherit;
     outline: none;
     font-size: 18px;
+    font-family: $text-font;
 
     &::placeholder {
-        color: #4794cc;
+        color: $main-color;
     };
 }
 
@@ -28,15 +41,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: $icon-size;
+    height: $icon-size;
     padding: 0;
-    background: #ffffff;
     border: none;
     border-radius: 3px;
+    background: #ffffff;
     cursor: pointer;
 
     &:hover {
-        background: #e3e3e3;
+        background: $outer-folder-color;
     }
 }

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {deleteFirstAlert} from '../actions/index';
 import styles from '../styles/Alerts.module.scss';
 
-let AlertConatiner = props => {
+let Alerts = props => {
     return Boolean(props.alert) && (
         <div className={styles.container}>
             <div className={styles.alert + " " + styles[props.alert.alertType]} onAnimationIteration={props.onIterationEnd}> {props.alert.text} </div>
@@ -21,6 +21,6 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-AlertConatiner = connect(mapStateToProps, mapDispatchToProps)(AlertConatiner);
+Alerts = connect(mapStateToProps, mapDispatchToProps)(Alerts);
 
-export default AlertConatiner;
+export default Alerts;

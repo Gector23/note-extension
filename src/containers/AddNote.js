@@ -74,8 +74,8 @@ class AddNote extends React.Component {
     }
 
     addNoteIconSrc = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAAw0lEQVRIie2Vuw3CMBRFD5+CDVAoWYAlKEAskwHSMgKr0FACPQ0CW
-    sgMaaHIQwTjYPs5VOFKV5H8ucdOnOcezSsBdsAY2PR/AMiAibjTZHACpMAAWAN34GAOWgC5dLpcANNK+FnalwJZSfubbpHhT6d12wwNHwJHo/8CjLSAqPAqwCVVuC9AHe4LMD/oiddp2QPbWMC3lTvn
-        hwBsr+VjvqZUBP3+XQUgSH9ACwG5PH2qqs1QlvxazfG/E2y+AjPFRtusBwCphbcWtqpBAAAAAElFTkSuQmCC`;
+    sgMaaHIQwTjYPs5VOFKV5H8ucdOnOcezSsBdsAY2PR/AMiAibjTZHACpMAAWAN34GAOWgC5dLpcANNK+FnalwJZSfubbpHhT6d12wwNHwJHo/8CjLSAqPAqwCVVuC9AHe4LMD/oiddp2QPbWMC3lTvnhwBsr+VjvqZUBP
+    3+XQUgSH9ACwG5PH2qqs1QlvxazfG/E2y+AjPFRtusBwCphbcWtqpBAAAAAElFTkSuQmCC`;
     doubleDownIconSrc = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAABRUlEQVRIie3US0scURCG4YdsRuOIMYiKCM4ETeJt459240YX3j
     UxCyGIZBE0G8EL3v9EuzjVdC+k5+IEBP3gQPfpr96qrlPdvOu1qYE1jHQR+wnLmKgyrSPDH3zuAD6E3xG7UWUcxUmHSQbwK2IupC5UagynEXCM4Rbwn+G9RLONgsAkziLwEIPPeD7iR3iu8KVdeK4pnAfgIKptBf/QCtq
     QDno87psByLCH/li7sXeN6fB+xV8sVSVYi8B/inGbDlCGrVgZbgOaw29if6UqwTCOwniumIiZEiDDA+afgR+gXpWA9MHkM32h6O+3qPoRC6W9juCtkizGglnchWdHOpuOVFdMyh3mSs/KlW93A881IE1Phnup79+lVuWH
@@ -111,7 +111,7 @@ class AddNote extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    let editNote = state.notes.find(note => note.edit === true && note.folderId === ownProps.folderId);
+    const editNote = state.notes.find(note => note.edit === true && note.folderId === ownProps.folderId);
     return {editNote};
 }
 

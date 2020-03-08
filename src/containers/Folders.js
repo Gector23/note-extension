@@ -1,15 +1,31 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {deleteFolder, deleteAllNoteIn} from '../actions/index';
+import {deleteFolder, deleteAllNoteIn, folderMove} from '../actions/index';
+import SortableContainer from '../sortable-containers/SortableContainer';
+import SortableElement from '../sortable-containers/SortableElement';
 import Folder from '../components/Folder';
 import styles from '../styles/Folders.module.scss';
 
-let FoldersContainer = (props) => {
-    let foldersList = props.folders.map(folder => (
-        <Folder key={folder.folderId} folderId={folder.folderId} name={folder.name} onAllNoteDelete={props.onAllNoteDelete} onFolderDelete={props.onFolderDelete}></Folder>
-    ));
+class Folders extends React.Component {
+    constructor(props) {
+        super(props);
 
-    return Boolean(foldersList.length) && <div className={styles.container}> {foldersList} </div>;
+        this.handleSortEnd = this.handleSortEnd.bind(this);
+    }
+
+    handleSortEnd({oldIndex, newIndex}) {
+        this.props.onFolderMove(oldIndex, newIndex);
+    }
+
+    render() {
+        let foldersList = this.props.folders.map((folder, index) => (
+            <SortableElement key={folder.folderId} index={index}>
+                <Folder folderId={folder.folderId} name={folder.name} onAllNoteDelete={this.props.onAllNoteDelete} onFolderDelete={this.props.onFolderDelete}></Folder>
+            </SortableElement>
+        ));
+
+        return Boolean(foldersList.length) && <SortableContainer onSortEnd={this.handleSortEnd} useDragHandle><div className={styles.container}>{foldersList}</div></SortableContainer>;
+    }
 }
 
 const mapStateToProps = state => {
@@ -19,10 +35,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAllNoteDelete: folderId => dispatch(deleteAllNoteIn(folderId)),
-        onFolderDelete: folderId => dispatch(deleteFolder(folderId))
+        onFolderDelete: folderId => dispatch(deleteFolder(folderId)),
+        onFolderMove: (oldIndex, newIndex) => dispatch(folderMove(oldIndex, newIndex))
     };
 }
 
-FoldersContainer = connect(mapStateToProps, mapDispatchToProps)(FoldersContainer);
+Folders = connect(mapStateToProps, mapDispatchToProps)(Folders);
 
-export default FoldersContainer;
+export default Folders;
